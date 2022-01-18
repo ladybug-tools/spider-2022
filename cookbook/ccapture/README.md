@@ -20,6 +20,12 @@ _CCapture in a resizable window. One finger to rotate. Two to zoom._
 
 ## Links of Interest
 
+Screen CCapture ~ Thank you Jaume Sanchez
+* https://github.com/spite/ccapture.js/
+
+webm to mp4
+
+https://cloudconvert.com/webm-to-mp4
 
 ## Change Log
 

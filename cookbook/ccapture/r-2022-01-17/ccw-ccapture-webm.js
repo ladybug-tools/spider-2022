@@ -92,7 +92,7 @@ CCW.setupButtons = function () {
 
 	butSmartFrame.addEventListener( "click", e => {
 		e.preventDefault();
-		CCW.setupScreen(276,475);
+		CCW.setupScreen(2*276,2*475);
 	}, false );
 
 	butStart.addEventListener( "click", e => {
