@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<meta name=description content="Real-time 3D in your browser with menu hiding">
 	<meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
-	<meta name="date" content="2022-01-16">
+	<meta name="date" content="2022-01-17">
 	<title></title>
 	<style>
 		/* Copyright 2021 Theo Armour. MIT License */
@@ -15,6 +15,11 @@
 			font: 100% monospace;
 			margin: 0;
 			overflow: hidden;
+		}
+
+		summary {
+			font-size: 150%;
+			font-weight: bold;
 		}
 
 		#main {
@@ -43,8 +48,8 @@
 </head>
 
 <body>
-	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r134/build/three.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r134/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r136/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r136/examples/js/controls/OrbitControls.js"></script>
 
 
 	<nav id=navMenu class=nav>
@@ -54,13 +59,21 @@
 			<summary>show&darr; || hide&uarr; </summary>
 
 			<h1>
-				<a href="https://github.com/pushme-pullyou/tootoo-2021/tree/master/lib3d/" target="_blank"
+				<a href="https://github.com/ladybug-tools/spider-2022/tree/master/lib-templates" target="_blank"
 					title="source code on GitHub"><img
-						src=https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/mark-github.svg></a>
+						src=https://pushme-pullyou.github.io/tootoo-2022/assets/icons/mark-github.svg></a>
 				<a href="" id=aTitle title="Click this menu title to reset the model"></a>
 				<span id="release"></span>
 			</h1>
 
+			<p>
+				<button onclick=drawLinesRandom()>drawLinesRandom</button>
+			</p>
+
+			<p>
+				<button onclick=drawLinesLissajous()>drawLinesLissajous</button>
+
+			</p>
 			<div id=divMessage></div>
 
 			<p
@@ -132,22 +145,38 @@
 			// mesh = new THREE.Mesh( geometry, material );
 			// scene.add( mesh );
 
-			drawLines()
+			//drawLinesRandom();
+
+			drawLinesLissajous();
 
 		}
 
 
 
 
-		function drawLines() {
+		function drawLinesLissajous() {
+
+			scene.remove( mesh );
 
 			const v = ( x, y, z ) => new THREE.Vector3( x, y, z );
 
+			const items = 500;
+
+			const delta = 2 * Math.PI / ( items );
+
+			const distance = 50;
+
 			const points = [];
 
-			for ( let i = 0; i < 500; i++ ) {
+			for ( let i = 0; i < items; i++ ) {
 
-				points[ i ] = v( 100 * Math.random() - 50, 100 * Math.random() - 50, 100 * Math.random() - 50 )
+				//points[ i ] = v( 100 * Math.random() - 50, 100 * Math.random() - 50, 100 * Math.random() - 50 );
+
+				x = Math.sin( i * delta * 7 ) * distance;
+				y = Math.cos( i * delta * 3 ) * distance;
+				z = Math.cos( i * delta * 4 ) * distance;
+
+				points.push( v( x, y, z ) )
 
 			}
 
@@ -155,9 +184,13 @@
 
 			const material = new THREE.LineBasicMaterial( { color: 0x0000ff } );
 
-			const line = new THREE.Line( geometry, material );
+			// https://exploratoria.github.io/exhibits/mathematics/hopf-fibration/
+			// https://exploratoria.github.io/exhibits/mathematics/modular-fibration/
+			//var material = new THREE.LineBasicMaterial( { color: new THREE.Color().setHSL( i / 6, 1, .5 ) } );
 
-			scene.add( line );
+			mesh = new THREE.Line( geometry, material );
+
+			scene.add( mesh );
 
 		}
 

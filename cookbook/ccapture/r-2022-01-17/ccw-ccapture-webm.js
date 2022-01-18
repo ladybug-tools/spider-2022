@@ -153,9 +153,17 @@ CCW.render = function() {
 	const distance = + rngDistance.value;
 	const center = scene.position;
 
-	camera.position.x = center.x + Math.cos( CCW.progress * Math.PI * 3 ) * distance;
-	camera.position.y = center.y + Math.sin( CCW.progress * Math.PI * 4 ) * distance;
-	camera.position.z = center.z + Math.cos( CCW.progress * Math.PI * 7 ) * distance;
+	// camera.position.x = center.x + Math.cos( CCW.progress * Math.PI * 3 ) * distance;
+	// camera.position.y = center.y + Math.sin( CCW.progress * Math.PI * 4 ) * distance;
+	// camera.position.z = center.z + Math.cos( CCW.progress * Math.PI * 7 ) * distance;
+
+	camera.position.x = Math.sin( CCW.progress * 7 ) * distance;
+	camera.position.y = Math.cos( CCW.progress * 5 ) * distance;
+	camera.position.z = Math.cos( CCW.progress * 3 ) * distance;
+
+	// x = Math.sin( i * delta * 7 ) * distance;
+	// y = Math.cos( i * delta * 5 ) * distance;
+	// z = Math.cos( i * delta * 3 ) * distance;
 
 	camera.lookAt( center );
 
