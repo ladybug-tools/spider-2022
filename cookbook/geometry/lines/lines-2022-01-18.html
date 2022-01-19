@@ -52,6 +52,8 @@
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r136/examples/js/controls/OrbitControls.js"></script>
 
 
+	<script src="https://www.ladybug.tools/spider-2022/cookbook/ccapture/r-2022-01-17/ccw-ccapture-webm.js"></script>
+
 	<nav id=navMenu class=nav>
 
 		<details open>
@@ -149,6 +151,8 @@
 
 			drawLinesLissajous();
 
+			CCW.init();
+
 		}
 
 
@@ -206,8 +210,8 @@
 			for ( let i = 0; i < items; i++ ) {
 
 				x = Math.sin( i * delta * 7 ) * distance;
-				y = Math.cos( i * delta * 3 ) * distance;
-				z = Math.cos( i * delta * 4 ) * distance;
+				y = Math.cos( i * delta * 4 ) * distance;
+				z = Math.cos( i * delta * 3 ) * distance;
 
 				points.push( x, y, z )
 
