@@ -143,12 +143,12 @@ CCW.render = function() {
 
 	//progress goes from 0 to 1
 
-	const frames = CCW.frameRate * CCW.timeLimit;
+	CCW.frames = CCW.frameRate * CCW.timeLimit + 1;
 
-	const delta = Math.PI * 2 / frames;
+	//const delta = Math.PI * 2 / frames;
 
-	mesh.rotation.x += delta;
-	mesh.rotation.y += delta;
+	//mesh.rotation.x += delta;
+	//mesh.rotation.y += delta;
 
 	const distance = + rngDistance.value;
 	const center = scene.position;
@@ -167,7 +167,7 @@ CCW.render = function() {
 
 	camera.lookAt( center );
 
-	CCW.progress += 1 / frames;
+	CCW.progress += 1 / CCW.frames;
 
 	renderer.render( scene, camera );
 	CCW.recorder.capture( renderer.domElement );

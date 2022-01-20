@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<meta name=description content="Real-time 3D in your browser with menu hiding">
 	<meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
-	<meta name="date" content="2022-01-17">
+	<meta name="date" content="2022-01-18">
 	<title></title>
 	<style>
 		/* Copyright 2021 Theo Armour. MIT License */
@@ -44,7 +44,6 @@
 		.full-width {
 			width: 100%;
 		}
-
 	</style>
 </head>
 
@@ -52,10 +51,10 @@
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r136/build/three.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r136/examples/js/controls/OrbitControls.js"></script>
 
-	<script src="https://ladybug.tools/spider-2022/cookbook/ccapture/r-2022-01-17/ccw-ccapture-webm.js"></script>
 	<!--
-		<script src="ccw-ccapture-webm.js"></script>
-	-->
+	<script src="https://ladybug.tools/spider-2022/cookbook/ccapture/r-2022-01-17/ccw-ccapture-webm.js"></script>
+-->
+	<script src="ccw-ccapture-webm.js"></script>
 
 	<nav id=navMenu class=nav>
 
@@ -71,7 +70,7 @@
 				<span id="release"></span>
 			</h1>
 
-			<div id=divMessage ></div>
+			<div id=divMessage></div>
 
 			<p
 				title="View the number of objects that need rendering and the total number of triangles used to create the objects">
@@ -138,7 +137,7 @@
 			scene.add( axesHelper );
 
 			geometry = new THREE.BoxGeometry( 50, 50, 50 );
-			material = new THREE.MeshNormalMaterial( { side: 2 });
+			material = new THREE.MeshNormalMaterial( { side: 2 } );
 			mesh = new THREE.Mesh( geometry, material );
 			scene.add( mesh );
 

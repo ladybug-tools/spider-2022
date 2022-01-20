@@ -20,14 +20,6 @@ _ZZZZZ in a resizable window. One finger to rotate. Two to zoom._
 
 ## Links of Interest
 
-* https://en.wikipedia.org/wiki/Lissajous_curve
-* https://en.wikipedia.org/wiki/Lissajous_orbit
-* https://www.youtube.com/watch?v=oEN0o9ZGmOM
-* Kieran Clancy) https://kieranclancy.github.io/star-animation/
-* (Richard Copley) https://bustercopley.github.io/star/
-* (Liam Applebe) https://tiusic.com/magic_star_anim.html
-
-
 
 ## Change Log
 
