@@ -145,5 +145,5 @@ https://rufus31415.github.io/sandbox/3d-viewer/
 
 ***
 
-<center><img style=color:green; title="Your AEC 3D viewer happy place!" height="24" width="24" src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico">
+<center><img style=color:green; title="Your AEC 3D viewer happy place!" height="24" width="24" src="https://ladybug.tools/assets/svg/spider.svg">
 </center>
