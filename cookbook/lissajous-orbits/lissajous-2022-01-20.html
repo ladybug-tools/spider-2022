@@ -7,7 +7,7 @@
 	<meta name=description content="Real-time 3D in your browser with menu hiding">
 	<meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
 	<meta name="date" content="2022-01-20">
-	<title>Plane Geometry</title>
+	<title>Lissajous</title>
 	<style>
 		/* Copyright 2021 Theo Armour. MIT License */
 
@@ -51,6 +51,8 @@
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r136/build/three.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r136/examples/js/controls/OrbitControls.js"></script>
 
+	<script src="https://www.ladybug.tools/spider-2022/cookbook/ccapture/r-2022-01-17/ccw-ccapture-webm.js"></script>
+
 
 	<nav id=navMenu class=nav>
 
@@ -68,10 +70,6 @@
 
 			<p>
 				<button onclick=setMeshToBox()>setMeshToBox</button>
-			</p>
-
-			<p>
-				<button onclick=setMeshToSquare()>setMeshToSquare</button>
 			</p>
 
 			<p>
@@ -149,6 +147,7 @@
 			// axesHelper = new THREE.AxesHelper( 50 );
 			// scene.add( axesHelper );
 
+			CCW.init();
 
 			setMeshLissajous();
 
@@ -168,30 +167,6 @@
 		}
 
 
-		function setMeshToSquare() {
-
-			scene.remove( mesh )
-			const geometry = new THREE.BufferGeometry();
-			// create a simple square shape. We duplicate the top left and bottom right
-			// vertices because each vertex needs to appear once per triangle.
-			const vertices = new Float32Array( [
-				-1.0, -1.0, 1.0,
-				1.0, -1.0, 1.0,
-				1.0, 1.0, 1.0,
-
-				1.0, 1.0, 1.0,
-				-1.0, 1.0, 1.0,
-				-1.0, -1.0, 1.0
-			] );
-
-			// itemSize = 3 because there are 3 values (components) per vertex
-			geometry.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
-			const material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
-			mesh = new THREE.Mesh( geometry, material );
-
-			scene.add( mesh );
-
-		}
 
 
 		function setMesh() {
