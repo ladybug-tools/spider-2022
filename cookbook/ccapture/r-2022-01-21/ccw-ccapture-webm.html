@@ -10,7 +10,6 @@
 	<title></title>
 	<style>
 		/* Copyright 2021 Theo Armour. MIT License */
-
 		:root {
 			font-size: 100%;
 			--mnu-width: 19rem;
@@ -55,6 +54,7 @@
 			box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 		}
 
+
 		/* info box ~ See mnu-menu.js */
 
 		.info {
@@ -97,6 +97,10 @@
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r136/build/three.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r136/examples/js/controls/OrbitControls.js"></script>
 
+	<!--
+	<script src="https://ladybug.tools/spider-2022/cookbook/ccapture/r-2022-01-17/ccw-ccapture-webm.js"></script>
+-->
+	<script src="ccw-ccapture-webm.js"></script>
 
 	<nav id=navMenu class=nav>
 
@@ -105,11 +109,12 @@
 			<summary>show&darr; || hide&uarr; </summary>
 
 			<h1>
-				<a href="https://github.com/ladybug-tools/spider-2022/tree/master/lib-templates" target="_blank"
+				<a href="https://github.com/ladybug-tools/spider-2022/tree/master/cookboo/ccapture" target="_blank"
 					title="source code on GitHub"><img
 						src=https://pushme-pullyou.github.io/tootoo-2022/assets/icons/mark-github.svg></a>
 				<a href="" id=aTitle title="Click this menu title to reset the model"></a>
 				<span id="release"></span>
+
 				<span class="info">
 					<img class=infoImg
 						src="https://pushme-pullyou.github.io/tootoo-2022/assets/icons/noun_Information_585560.svg">
@@ -117,7 +122,6 @@
 						<div id="info">Basic Three.JS Template</div>
 					</div>
 				</span>
-
 			</h1>
 
 			<div id=divMessage></div>
@@ -187,23 +191,13 @@
 			scene.add( axesHelper );
 
 			geometry = new THREE.BoxGeometry( 50, 50, 50 );
-			material = new THREE.MeshNormalMaterial();
+			material = new THREE.MeshNormalMaterial( { side: 2 } );
 			mesh = new THREE.Mesh( geometry, material );
 			scene.add( mesh );
 
+			CCW.init();
+
 		}
-
-
-
-
-		function addInfoBox( text = "infoBoxHtm", id = "divInfo" ) {
-			//console.log( { text } );
-			const htm = `
-`;
-
-			return htm;
-
-		};
 
 
 

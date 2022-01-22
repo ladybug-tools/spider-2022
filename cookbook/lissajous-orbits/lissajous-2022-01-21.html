@@ -7,15 +7,9 @@
 	<meta name=description content="Real-time 3D in your browser with menu hiding">
 	<meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
 	<meta name="date" content="2022-01-21">
-	<title></title>
+	<title>Lissajous</title>
 	<style>
 		/* Copyright 2021 Theo Armour. MIT License */
-
-		:root {
-			font-size: 100%;
-			--mnu-width: 19rem;
-			--margin: 0.5rem;
-		}
 
 		body {
 			font: 100% monospace;
@@ -50,52 +44,14 @@
 		.full-width {
 			width: 100%;
 		}
-
-		.gmd-5 {
-			box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-		}
-
-		/* info box ~ See mnu-menu.js */
-
-		.info {
-			cursor: pointer;
-			float: right;
-			position: relative;
-		}
-
-		.info:hover {
-			background-color: yellow;
-		}
-
-		.infoImg {
-			opacity: 0.5;
-			width: 1rem;
-		}
-
-		.infoTooltip {
-			border: 1px double #888;
-			border-radius: var(--margin);
-			background: white;
-			display: none;
-			font: 100% monospace;
-			font-size: 1rem;
-			font-weight: normal;
-			right: 0;
-			padding: var(--margin);
-			position: absolute;
-			width: calc(0.75 * var(--mnu-width));
-			z-index: 1000;
-		}
-
-		.info:hover>.infoTooltip {
-			display: block;
-		}
 	</style>
 </head>
 
 <body>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r136/build/three.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r136/examples/js/controls/OrbitControls.js"></script>
+
+	<script src="https://www.ladybug.tools/spider-2022/cookbook/ccapture/r-2022-01-21/ccw-ccapture-webm.js"></script>
 
 
 	<nav id=navMenu class=nav>
@@ -105,20 +61,24 @@
 			<summary>show&darr; || hide&uarr; </summary>
 
 			<h1>
-				<a href="https://github.com/ladybug-tools/spider-2022/tree/master/lib-templates" target="_blank"
+				<a href="https://github.com/ladybug-tools/spider-2022/tree/master/cookbook/lissajous-orbits" target="_blank"
 					title="source code on GitHub"><img
 						src=https://pushme-pullyou.github.io/tootoo-2022/assets/icons/mark-github.svg></a>
 				<a href="" id=aTitle title="Click this menu title to reset the model"></a>
 				<span id="release"></span>
-				<span class="info">
-					<img class=infoImg
-						src="https://pushme-pullyou.github.io/tootoo-2022/assets/icons/noun_Information_585560.svg">
-					<div class="infoTooltip gmd-5">
-						<div id="info">Basic Three.JS Template</div>
-					</div>
-				</span>
-
 			</h1>
+
+			<p>
+				<button onclick=setMeshToBox()>setMeshToBox</button>
+			</p>
+
+			<p>
+				<button onclick=setMesh()>setMesh</button>
+			</p>
+
+			<p>
+				<button onclick=setMeshLissajous()>setMeshLissajous</button>
+			</p>
 
 			<div id=divMessage></div>
 
@@ -134,6 +94,7 @@
 
 	<script>
 
+		let coordinates;
 		let renderer, camera, controls, scene;
 		let geometry, material, mesh, axesHelper;
 
@@ -170,7 +131,7 @@
 			renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
 			controls = new THREE.OrbitControls( camera, renderer.domElement );
-			//controls.autoRotate = true;
+			controls.autoRotate = true;
 			controls.autoRotateSpeed = 2;
 			controls.enableDamping = true;
 			controls.enablePan = true;
@@ -183,9 +144,21 @@
 			window.addEventListener( 'keyup', function () { controls.autoRotate = false; }, false );
 			renderer.domElement.addEventListener( 'click', function () { controls.autoRotate = false; }, false );
 
-			axesHelper = new THREE.AxesHelper( 50 );
-			scene.add( axesHelper );
+			// axesHelper = new THREE.AxesHelper( 50 );
+			// scene.add( axesHelper );
 
+			CCW.init();
+
+			setMeshLissajous();
+
+			//setSquareMesh();
+
+		}
+
+
+		function setMeshToBox() {
+
+			scene.remove( mesh )
 			geometry = new THREE.BoxGeometry( 50, 50, 50 );
 			material = new THREE.MeshNormalMaterial();
 			mesh = new THREE.Mesh( geometry, material );
@@ -196,14 +169,168 @@
 
 
 
-		function addInfoBox( text = "infoBoxHtm", id = "divInfo" ) {
-			//console.log( { text } );
-			const htm = `
-`;
+		function setMesh() {
 
-			return htm;
+			coordinates = getCoordinates();
 
-		};
+			//console.log( "coordinates", coordinates );
+
+			vertices = getQuads( coordinates );
+
+			//console.log( "vertices", vertices );
+
+			setMeshFromVertices();
+
+		}
+
+
+		function setMeshLissajous() {
+
+			coordinates = getCoordinatesLissajous()
+
+			vertices = getQuads( coordinates );
+
+			setMeshFromVertices();
+
+		}
+
+
+		function getCoordinates() {
+
+			length = 30;
+
+			coordinates = [];
+
+			for ( let j = 0; j < 2; j++ ) {
+
+				const arr = [];
+
+				for ( let i = 0; i < length + 1; i++ ) {
+
+					const x = i * 10;
+					const y = j * 20;
+					const z = Math.sin( i * 0.1 ) * 50;
+
+					arr.push( x, y, z );
+
+				}
+
+				coordinates.push( arr )
+			}
+
+			return coordinates;
+
+		}
+
+
+		function getCoordinatesLissajous( distance = 50 ) {
+
+			length = 500;
+
+			const delta = 2 * Math.PI / length;
+
+			coordinates = [];
+
+			for ( let j = 0; j < 2; j++ ) {
+
+				const arr = [];
+
+				for ( let i = 0; i < length + 1; i++ ) {
+
+					x = Math.sin( i * delta * 7 ) * distance;
+					y = Math.cos( i * delta * 4 ) * distance;
+					z = Math.cos( i * delta * 3 ) * distance;
+
+					arr.push( x, y, z );
+
+				}
+
+				distance -= 30;
+				coordinates.push( arr );
+			}
+
+			return coordinates;
+
+		}
+
+
+
+		function getQuads( coordinates ) {
+
+			const c1 = coordinates[ 0 ];
+			const c2 = coordinates[ 1 ];
+
+			const quads = [];
+
+			for ( let i = 0; i < c1.length - 3; i += 3 ) {
+
+				quads.push(
+					c1[ i ], c1[ i + 1 ], c1[ i + 2 ],
+					c2[ i ], c2[ i + 1 ], c2[ i + 2 ],
+					c2[ i + 3 ], c2[ i + 4 ], c2[ i + 5 ],
+
+					c1[ i ], c1[ i + 1 ], c1[ i + 2 ],
+					c2[ i + 3 ], c2[ i + 4 ], c2[ i + 5 ],
+					c1[ i + 3 ], c1[ i + 4 ], c1[ i + 5 ]
+				);
+
+			}
+
+			const vertices = new Float32Array( quads );
+
+			return vertices;
+
+		}
+
+
+		function setGeometryColorsHSL( length = 999, geometry ) {
+
+			// https://github.com/mrdoob/three.js/blob/master/examples/webgl_lines_colors.html
+
+			const color = new THREE.Color();
+
+			colors = [];
+
+			for ( let i = 0; i < length; i++ ) {
+
+				color.setHSL( i / length, 1.0, 0.5 );
+				colors.push( color.r, color.g, color.b );
+
+			}
+
+			colors = [...colors, ...colors.slice().reverse() ]
+
+			geometry.setAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
+
+		}
+
+
+
+		function setMeshFromVertices( values = vertices ) {
+
+			scene.remove( mesh );
+			const geometry = new THREE.BufferGeometry();
+			geometry.setAttribute( "position", new THREE.BufferAttribute( values, 3 ) );
+
+			//geometry.setAttribute( 'color', new THREE.Float32BufferAttribute( values, 3 ) );
+			setGeometryColorsHSL( coordinates[ 0 ].length, geometry );
+			geometry.computeVertexNormals();
+			geometry.verticesNeedUpdate = true;
+			geometry.normalsNeedUpdate = true;
+			geometry.computeVertexNormals();
+			geometry.buffersNeedUpdate = true;
+			geometry.uvsNeedUpdate = true;
+
+			const material = new THREE.MeshNormalMaterial( { vertexColors: THREE.VertexColors, side: 2 } );
+
+			//const material = new THREE.MeshBasicMaterial( { color: 0xffffff, vertexColors: THREE.VertexColors, side: 2 } );
+			mesh = new THREE.Mesh( geometry, material );
+			scene.add( mesh );
+
+		}
+
+
+
 
 
 
