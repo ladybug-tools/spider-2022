@@ -17,23 +17,22 @@ CCW.init = function ( obj = {} ) {
 	htm = `
 <details>
 
-<summary>CCW CCapture WebM
-	<span class="info">
-		<img class=infoImg src="https://pushme-pullyou.github.io/tootoo-2022/assets/icons/noun_Information_585560.svg">
-		<div class="infoTooltip gmd-5">
-			<div id="ccw">
-				<p>
-				Thanks to Jaume Sanchez:<a href="https://github.com/spite/ccapture.js/" target="_blank">ccapture.js</a>
-				& <a href="https://github.com/thenickdude/webm-writer-js" target="_blank">webm-writer-js</a>
-				</p>
+	<summary>CCW CCapture WebM
+		<span class="info">
+			<img class=infoImg src="https://pushme-pullyou.github.io/tootoo-2022/assets/icons/noun_Information_585560.svg">
+			<div class="infoTooltip gmd-5">
+				<div id="ccw">
+					<p>
+					Thanks to Jaume Sanchez:<a href="https://github.com/spite/ccapture.js/" target="_blank">ccapture.js</a>
+					& <a href="https://github.com/thenickdude/webm-writer-js" target="_blank">webm-writer-js</a>
+					</p>
+				</div>
 			</div>
-		</div>
-	</span>
-</summary>
-
-
+		</span>
+	</summary>
 
 	<div class="buttons">
+
 	<p>
 		<label title="Slide me">
 			Camera distance: <output id=outDistance>170</output>
@@ -88,13 +87,17 @@ CSS.addScripts = function () {
 };
 
 
+
 CCW.zoom = function () {
 
 	cameraDistance = camera.position.distanceTo( scene.position );
 	//camera.position.setScalar( + rngDistance.value / cameraDistance )
 
-	camera.position.multiplyScalar(  parseFloat( rngDistance.value ) / cameraDistance )
-}
+	camera.position.multiplyScalar( parseFloat( rngDistance.value ) / cameraDistance );
+};
+
+
+
 CCW.setupButtons = function () {
 
 	cameraDistance = camera.position.distanceTo( scene.position );
@@ -163,11 +166,11 @@ CCW.setupScreen = function ( width = 512, height = 512 ) {
 	camera.updateProjectionMatrix();
 	renderer.setSize( width, height );
 
-	const distance = + rngDistance.value;
+	// const distance = + rngDistance.value;
 
-	camera.position.x = Math.sin( 0 ) * distance;
-	camera.position.y = Math.cos( 0 ) * distance;
-	camera.position.z = 0; //Math.cos( CCW.progress * 3 ) * distance;
+	// camera.position.x = Math.sin( 0 ) * distance;
+	// camera.position.y = Math.cos( 0 ) * distance;
+	// camera.position.z = 0; //Math.cos( CCW.progress * 3 ) * distance;
 
 	animate = CCW.render;
 	animate();

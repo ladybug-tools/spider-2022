@@ -86,7 +86,7 @@
 		.info:hover>.infoTooltip {
 			display: block;
 		}
-		
+
 	</style>
 </head>
 
@@ -270,7 +270,7 @@
 
 			length = 500;
 
-			const delta = 2 * Math.PI / length;
+			const delta = 2 * Math.PI / ( length - 1 );
 
 			coordinates = [];
 
@@ -278,7 +278,7 @@
 
 				const arr = [];
 
-				for ( let i = 0; i < length + 1; i++ ) {
+				for ( let i = 0; i < length; i++ ) {
 
 					x = Math.sin( i * delta * 7 ) * distance;
 					y = Math.cos( i * delta * 4 ) * distance;
@@ -356,17 +356,18 @@
 			geometry.setAttribute( "position", new THREE.BufferAttribute( values, 3 ) );
 
 			//geometry.setAttribute( 'color', new THREE.Float32BufferAttribute( values, 3 ) );
-			setGeometryColorsHSL( coordinates[ 0 ].length, geometry );
+			setGeometryColorsHSL( 1500, geometry );
+
 			geometry.computeVertexNormals();
 			geometry.verticesNeedUpdate = true;
 			geometry.normalsNeedUpdate = true;
-			geometry.computeVertexNormals();
 			geometry.buffersNeedUpdate = true;
 			geometry.uvsNeedUpdate = true;
 
-			const material = new THREE.MeshNormalMaterial( { vertexColors: THREE.VertexColors, side: 2 } );
+			//const material = new THREE.MeshNormalMaterial( { vertexColors: THREE.VertexColors, side: 2 } );
 
-			//const material = new THREE.MeshBasicMaterial( { color: 0xffffff, vertexColors: THREE.VertexColors, side: 2 } );
+			const material = new THREE.MeshBasicMaterial( { color: 0xffffff, vertexColors: THREE.VertexColors, side: 2 } );
+
 			mesh = new THREE.Mesh( geometry, material );
 			scene.add( mesh );
 
