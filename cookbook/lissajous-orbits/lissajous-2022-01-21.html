@@ -44,6 +44,49 @@
 		.full-width {
 			width: 100%;
 		}
+
+
+		.gmd-5 {
+			box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+		}
+
+
+		/* info box ~ See mnu-menu.js */
+
+		.info {
+			cursor: pointer;
+			float: right;
+			position: relative;
+		}
+
+		.info:hover {
+			background-color: yellow;
+		}
+
+		.infoImg {
+			opacity: 0.5;
+			width: 1rem;
+		}
+
+		.infoTooltip {
+			border: 1px double #888;
+			border-radius: var(--margin);
+			background: white;
+			display: none;
+			font: 100% monospace;
+			font-size: 1rem;
+			font-weight: normal;
+			right: 0;
+			padding: var(--margin);
+			position: absolute;
+			width: calc(0.75 * var(--mnu-width));
+			z-index: 1000;
+		}
+
+		.info:hover>.infoTooltip {
+			display: block;
+		}
+		
 	</style>
 </head>
 

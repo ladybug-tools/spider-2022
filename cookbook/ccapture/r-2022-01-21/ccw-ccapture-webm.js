@@ -18,19 +18,17 @@ CCW.init = function ( obj = {} ) {
 <details>
 
 <summary>CCW CCapture WebM
-				<span class="info">
-					<img class=infoImg src="https://pushme-pullyou.github.io/tootoo-2022/assets/icons/noun_Information_585560.svg">
-					<div class="infoTooltip gmd-5">
-						<div id="ccw">
-							<p>
-							Thanks to Jaume Sanchez:<a href="https://github.com/spite/ccapture.js/" target="_blank">ccapture.js</a>
-							& <a href="https://github.com/thenickdude/webm-writer-js" target="_blank">webm-writer-js</a>
-							</p>
-						</div>
-					</div>
-				</span>
-
-
+	<span class="info">
+		<img class=infoImg src="https://pushme-pullyou.github.io/tootoo-2022/assets/icons/noun_Information_585560.svg">
+		<div class="infoTooltip gmd-5">
+			<div id="ccw">
+				<p>
+				Thanks to Jaume Sanchez:<a href="https://github.com/spite/ccapture.js/" target="_blank">ccapture.js</a>
+				& <a href="https://github.com/thenickdude/webm-writer-js" target="_blank">webm-writer-js</a>
+				</p>
+			</div>
+		</div>
+	</span>
 </summary>
 
 
@@ -47,7 +45,7 @@ CCW.init = function ( obj = {} ) {
 		<label title="Slide me">
 			Duration in seconds: <output id=outDuration>8</output>
 			<input id=rngDuration type=range class=full-width oninput=outDuration.value=this.value;
-				min=1 max=20 value=8 >
+				min=1 max=40 value=8 >
 		</label>
 	</p>
 	<p>
