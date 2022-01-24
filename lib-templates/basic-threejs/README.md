@@ -57,6 +57,16 @@ _Basic Three.js in a resizable window. One finger to rotate. Two to zoom._
 
 ```
 
+### checkbox
+
+```
+<p>
+	<label title="Uncheck to combine multiple models into one scene">
+		<input type="checkbox" id="chkNewFile" onchange=COR.addDragControls(); checked> Open new file
+	</label>
+</p>
+```
+
 ### Add Ground
 
 ``` js
