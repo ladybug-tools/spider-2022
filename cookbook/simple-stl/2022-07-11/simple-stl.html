@@ -183,13 +183,13 @@
 			scene.add( camera );
 
 			renderer = new THREE.WebGLRenderer( { antialias: true, alpha: false } );
-			//renderer.setPixelRatio( window.devicePixelRatio );
+			renderer.setPixelRatio( window.devicePixelRatio );
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
 
 			renderer.outputEncoding = THREE.sRGBEncoding;
 			renderer.shadowMap.enabled = true;
-			renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+			//renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
 			controls = new THREE.OrbitControls( camera, renderer.domElement );
 			controls.autoRotate = true;
@@ -208,6 +208,13 @@
 			axesHelper = new THREE.AxesHelper( 50 );
 			scene.add( axesHelper );
 
+			// Lights
+
+			scene.add( new THREE.HemisphereLight( 0x443333, 0x111122 ) );
+
+			addShadowedLight( 1, 1, 1, 0xffffff, 1.35 );
+			addShadowedLight( 0.5, 1, - 1, 0xffaa00, 1 );
+
 			// geometry = new THREE.BoxGeometry( 50, 50, 50 );
 			// material = new THREE.MeshNormalMaterial();
 			// mesh = new THREE.Mesh( geometry, material );
@@ -222,6 +229,7 @@
 		function loadSTL ( url = url1 ) {
 
 			const loader = new THREE.STLLoader();
+
 			loader.load(
 
 				url,
@@ -234,20 +242,24 @@
 					//geometry.scale( 0.5, 0.5, 0.5 );
 					geometry.center();
 
-					// if ( geometry.hasColors ) {
+					//let material;
 
-					//const material = new THREE.MeshStandardMaterial( { color: 0xcc8888 } );
+					console.log( "geom", geometry );
 
-					// } else {
+					if ( geometry.hasColors ) {
 
-					material = new THREE.MeshNormalMaterial( { side: 2 } );
+						material = new THREE.MeshPhongMaterial( { opacity: geometry.alpha, vertexColors: true } );
 
-					//}
+					} else {
+
+						material = new THREE.MeshNormalMaterial( { side: 2 } );
+
+					}
 
 					scene.remove( mesh );
 
 					mesh = new THREE.Mesh( geometry, material );
-					//mesh.castShadow = mesh.receiveShadow = true;
+					mesh.castShadow = mesh.receiveShadow = true;
 
 					scene.add( mesh );
 
@@ -316,6 +328,26 @@
 
 		}
 
+		function addShadowedLight ( x, y, z, color, intensity ) {
+
+			const directionalLight = new THREE.DirectionalLight( color, intensity );
+			directionalLight.position.set( x, y, z );
+			scene.add( directionalLight );
+
+			directionalLight.castShadow = true;
+
+			const d = 1;
+			directionalLight.shadow.camera.left = - d;
+			directionalLight.shadow.camera.right = d;
+			directionalLight.shadow.camera.top = d;
+			directionalLight.shadow.camera.bottom = - d;
+
+			directionalLight.shadow.camera.near = 1;
+			directionalLight.shadow.camera.far = 4;
+
+			directionalLight.shadow.bias = - 0.002;
+
+		}
 
 		function onWindowResize () {
 
