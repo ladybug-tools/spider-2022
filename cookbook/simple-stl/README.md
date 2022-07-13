@@ -11,14 +11,42 @@ _Simple STL in a resizable window. One finger to rotate. Two to zoom._
 
 ## Concept
 
+* STL files of Theo's mouth
+* Demo prepared for Dr V & Dr Y at UCSF to show that creating utilities for loading and displaying STL files is easy-peasy
+
+The procedures for loading and displaying STL files are well-established and generally do not place heady loads on modern computers.
+
 
 ## To Do / Wish List
 
+* Find STL files with color
 
 ## Issues
 
 
 ## Links of Interest
+
+
+View STL files using built-in GitHub STL Viewer
+
+https://github.com/theo-armour/mouth-stl-2022/blob/main/OrthoCAD_Export_76392642%20(4)/76392642_shell_occlusion_l.stl
+
+https://github.com/theo-armour/mouth-stl-2022/blob/main/OrthoCAD_Export_76392642%20(4)/76392642_shell_occlusion_u.stl
+
+Still images created by the dentist's software - with full color support
+
+https://theo-armour.github.io/mouth-stl-2022/OrthoCAD_Export_76392642%20(4)/gallery_%2376392642.jpg
+
+https://theo-armour.github.io/mouth-stl-2022/OrthoCAD_Export_76392642%20(4)/gallery_%2376392642_penta_front_m.jpg
+
+https://theo-armour.github.io/mouth-stl-2022/OrthoCAD_Export_76392642%20(4)/gallery_%2376392642_penta_left_m.jpg
+
+https://theo-armour.github.io/mouth-stl-2022/OrthoCAD_Export_76392642%20(4)/gallery_%2376392642_penta_lower_m.jpg
+
+https://theo-armour.github.io/mouth-stl-2022/OrthoCAD_Export_76392642%20(4)/gallery_%2376392642_penta_right_m.jpg
+
+https://theo-armour.github.io/mouth-stl-2022/OrthoCAD_Export_76392642%20(4)/gallery_%2376392642_penta_upper_m.jpg
+
 
 
 ## Change Log
@@ -29,9 +57,9 @@ _Simple STL in a resizable window. One finger to rotate. Two to zoom._
 * Load and remove
 * Supports colors & shadows
 
-
 ### 2022-07-10
 
+* Add Simple STL viewer
 * First commit
 
 
