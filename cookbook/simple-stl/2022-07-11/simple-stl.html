@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<meta name=description content="Real-time 3D in your browser with menu hiding">
 	<meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
-	<meta name="date" content="2022-07-10">
+	<meta name="date" content="2022-07-11">
 	<title></title>
 	<style>
 		/* Copyright 2022 Theo Armour. MIT License */
@@ -116,7 +116,8 @@
 						src="https://pushme-pullyou.github.io/tootoo-2022/assets/icons/noun_Information_585560.svg">
 					<div class="infoTooltip gmd-5">
 						<div id="info">
-							Demo prepared for<br>Dr V at UCSF to show that loading and displaying STL files is easy-peasy</p>
+							Demo prepared for<br>Dr V at UCSF to show that loading and displaying STL files is
+							easy-peasy</p>
 						</div>
 					</div>
 				</span>
@@ -128,14 +129,13 @@
 			<div>
 
 				<p>
-					<button onclick="loadSTL()">Load Theo's lower</button>
+					<button id=butUpper onclick="loadSTL(this,'upper',url2, upper)">Load Theo's upper</button>
 				</p>
 				<p>
-					<button onclick="loadSTL(url2)">Load Theo's upper</button>
+					<button id=butLower onclick="loadSTL(this,'lower',url1, lower)">Load Theo's lower</button>
 				</p>
 
 				<p>
-
 					1|2|3 fingers to rotate|zoom|pan
 				</p>
 			</div>
@@ -152,6 +152,7 @@
 
 	<script>
 
+		let upper = lower = new THREE.Object3D();
 		let renderer, camera, controls, scene;
 		let geometry, material, mesh, axesHelper;
 
@@ -163,6 +164,8 @@
 		animate();
 
 		function init () {
+
+			//console.log( "l1", lower );
 
 			//aTitle.innerHTML = document.title = location.href.split( "/" ).pop();
 
@@ -182,6 +185,14 @@
 			//scene.fog = new THREE.Fog( 0xcce0ff, 550, 800 );
 			scene.add( camera );
 
+			// Lights
+
+			scene.add( new THREE.HemisphereLight( 0x443333, 0x111122 ) );
+
+			addShadowedLight( 1, 1, 1, 0xffffff, 1.35 );
+			addShadowedLight( 0.5, 1, -1, 0xffffff, 1 );
+
+
 			renderer = new THREE.WebGLRenderer( { antialias: true, alpha: false } );
 			renderer.setPixelRatio( window.devicePixelRatio );
 			renderer.setSize( window.innerWidth, window.innerHeight );
@@ -189,7 +200,7 @@
 
 			renderer.outputEncoding = THREE.sRGBEncoding;
 			renderer.shadowMap.enabled = true;
-			//renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+			renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
 			controls = new THREE.OrbitControls( camera, renderer.domElement );
 			controls.autoRotate = true;
@@ -203,48 +214,65 @@
 			window.addEventListener( 'resize', onWindowResize, false );
 			window.addEventListener( 'orientationchange', onWindowResize, false );
 			window.addEventListener( 'keyup', function () { controls.autoRotate = false; }, false );
+
 			renderer.domElement.addEventListener( 'click', function () { controls.autoRotate = false; }, false );
 
 			axesHelper = new THREE.AxesHelper( 50 );
 			scene.add( axesHelper );
 
-			// Lights
+			const plane = new THREE.Mesh(
+				new THREE.PlaneGeometry( 200, 200 ),
+				new THREE.MeshPhongMaterial( { color: 0x999999, specular: 0x101010, side: 0 } )
+			);
+			plane.rotation.z = - Math.PI / 2;
+			plane.position.z = - 10;
+			scene.add( plane );
 
-			scene.add( new THREE.HemisphereLight( 0x443333, 0x111122 ) );
-
-			addShadowedLight( 1, 1, 1, 0xffffff, 1.35 );
-			addShadowedLight( 0.5, 1, - 1, 0xffaa00, 1 );
+			plane.receiveShadow = true;
 
 			// geometry = new THREE.BoxGeometry( 50, 50, 50 );
 			// material = new THREE.MeshNormalMaterial();
 			// mesh = new THREE.Mesh( geometry, material );
 			// scene.add( mesh );
 
-			loadSTL();
+			loadSTL(butLower,'lower', url1, lower );
 
 		}
 
 
 
-		function loadSTL ( url = url1 ) {
+		function loadSTL ( that, txt = "lower", url = url1) {
 
 			const loader = new THREE.STLLoader();
+
+			obj = scene.getObjectByName( txt )
+
+			//console.log( "obj",obj );
+
+			if ( obj ) {
+
+				scene.remove( obj );
+				that.innerText = "Load Theo's " + txt;
+				return;
+
+			}
 
 			loader.load(
 
 				url,
 
-				( geometry ) => {
+				( geo ) => {
 
+					geometry = geo;
 					//geometry.rotateX( -0.5 * Math.PI );
 					//geometry.computeFaceNormals();
-					//geometry.computeVertexNormals();
+					geometry.computeVertexNormals();
 					//geometry.scale( 0.5, 0.5, 0.5 );
-					geometry.center();
+					//geometry.center();
 
 					//let material;
 
-					console.log( "geom", geometry );
+					//console.log( "geom", geometry );
 
 					if ( geometry.hasColors ) {
 
@@ -252,17 +280,24 @@
 
 					} else {
 
+						//material = new THREE.MeshPhongMaterial( { color: 0xAAAAAA, specular: 0x111111, shininess: 200, side: 2 } );
 						material = new THREE.MeshNormalMaterial( { side: 2 } );
 
 					}
 
-					scene.remove( mesh );
+					//scene.remove( mesh );
 
-					mesh = new THREE.Mesh( geometry, material );
-					mesh.castShadow = mesh.receiveShadow = true;
+					const mesh = new THREE.Mesh( geometry, material );
+					mesh.castShadow = true;
+					mesh.receiveShadow = true;
+					mesh.name = txt;
 
 					scene.add( mesh );
+					that.innerText = "Remove Theo's " + txt;
 
+					obj = mesh;
+
+					//console.log( "obj", obj );
 
 				},
 
@@ -336,16 +371,20 @@
 
 			directionalLight.castShadow = true;
 
-			const d = 1;
+			const d = 100;
 			directionalLight.shadow.camera.left = - d;
 			directionalLight.shadow.camera.right = d;
 			directionalLight.shadow.camera.top = d;
 			directionalLight.shadow.camera.bottom = - d;
 
 			directionalLight.shadow.camera.near = 1;
-			directionalLight.shadow.camera.far = 4;
+			directionalLight.shadow.camera.far = 300;
 
 			directionalLight.shadow.bias = - 0.002;
+
+			// const directionalLightHelper = new THREE.DirectionalLightHelper( directionalLight );
+			// scene.add( directionalLightHelper );
+			// directionalLightHelper.visible = true;
 
 		}
 

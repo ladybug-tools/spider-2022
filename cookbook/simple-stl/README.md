@@ -6,7 +6,7 @@
 _Simple STL in a resizable window. One finger to rotate. Two to zoom._
 @@@-->
 
-### Full Screen: [Simple STL]( https://ladybug.tools/spider-2022/cookbook/simple-stl/ )
+## Full Screen: [Simple STL]( https://ladybug.tools/spider-2022/cookbook/simple-stl/ )
 
 
 ## Concept
@@ -22,6 +22,12 @@ _Simple STL in a resizable window. One finger to rotate. Two to zoom._
 
 
 ## Change Log
+
+## 2022-07-12
+
+* Upper and lower
+* Load and remove
+* Supports colors & shadows
 
 
 ### 2022-07-10
