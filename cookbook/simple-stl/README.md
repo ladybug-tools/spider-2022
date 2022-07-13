@@ -53,8 +53,8 @@ https://theo-armour.github.io/mouth-stl-2022/OrthoCAD_Export_76392642%20(4)/gall
 
 ## 2022-07-12
 
-* Upper and lower
-* Load and remove
+* View Upper or lower or both
+* Load and remove files
 * Supports colors & shadows
 
 ### 2022-07-10
