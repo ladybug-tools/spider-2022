@@ -96,6 +96,7 @@
 <body>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r142/build/three.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r142/examples/js/controls/OrbitControls.js"></script>
+	<script src="menu.js"></script>
 
 
 	<nav id=navMenu class=nav>
@@ -122,6 +123,8 @@
 
 			<div id=divMessage></div>
 
+			<div id=divMenu ></div>
+
 			<p
 				title="View the number of objects that need rendering and the total number of triangles used to create the objects">
 				<button onclick="setStats()">View renderer statistics</button>
@@ -146,6 +149,8 @@
 
 			aTitle.innerHTML = document.title ? document.title : location.href.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );
 			release.innerHTML = document.head.querySelector( "[ name=date ]" ).content;
+
+			divMenu.innerHTML = menuHTML;
 
 			const fov = 40;
 			const aspect = window.innerWidth / window.innerHeight;
@@ -192,17 +197,6 @@
 			scene.add( mesh );
 
 		}
-
-
-
-
-		function addInfoBox( text = "infoBoxHtm", id = "divInfo" ) {
-			//console.log( { text } );
-			const htm = ``;
-
-			return htm;
-
-		};
 
 
 
