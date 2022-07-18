@@ -139,7 +139,12 @@
 	<script>
 
 		let renderer, camera, controls, scene;
-		let geometry, material, mesh, axesHelper;
+		let geometry, material, mesh;
+		let group, groups, meshes;
+
+		let fileName, extension, url;
+
+		let axesHelper;
 
 		init();
 		animate();
@@ -186,6 +191,7 @@
 
 			window.addEventListener( 'resize', onWindowResize, false );
 			window.addEventListener( 'orientationchange', onWindowResize, false );
+			
 			window.addEventListener( 'keyup', function () { controls.autoRotate = false; }, false );
 			renderer.domElement.addEventListener( 'click', function () { controls.autoRotate = false; }, false );
 

@@ -1,7 +1,6 @@
 const COR = {};
 
 
-
 function loadThreeScript ( url, onLoad ) {
 
 	const script = document.head.appendChild( document.createElement( "script" ) );
