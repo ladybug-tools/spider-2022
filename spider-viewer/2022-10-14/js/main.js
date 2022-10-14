@@ -10,8 +10,8 @@ const COR = {
 
 	// Used by FRX
 	pathContent: "../",
-	pathTooToo: "../../../pushme-pullyou-tootoo-2021/",
-	//pathTooToo: "https://pushme-pullyou.github.io/tootoo-2021/",
+	//pathTooToo: "../../../pushme-pullyou-tootoo-2021/",
+	pathTooToo: "https://pushme-pullyou.github.io/tootoo-2021/",
 	defaultFile: "../home-page.md",
 	defaultIgnoreFolders: [],
 	//ignoreFolders: ["archive", "lib", "lib3d", "lib-templates"],
@@ -22,13 +22,13 @@ const COR = {
 	iconExternalFile: `<img class=infoImg  src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/icon-external-link.svg">`,
 	iconGitHub: `<img src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/mark-github.svg">`,
 	iconInfo: `<img class=infoImg src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/noun_Information_585560.svg">`,
-	iconRepo: `<img style=color:green; title="Your AEC 3D viewer happy place!" height="24" width="24" src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico">`,
+	iconRepo: `<img style=color:green; title="Your AEC 3D viewer happy place!" height="24" width="24" src="https://ladybug.tools/spider-2022/favicon.ico">`,
 	iconPencil: `<img class=infoImg  src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/icon-pencil-edit.svg">`,
 	release: "r-2021-11-11",
 	releaseThree: "r134",
 	title: document.title ? document.title : location.href.split( "/" ).pop().slice( 0, - 5 ).replace( /-/g, " " ),
-	urlAssets: "https://pushme-pullyou.github.io/tootoo-2021/",
-	urlSource: "https://github.com/ladybug-tools/spider-2021/tree/main/spider-viewer",
+	urlAssets: "https://pushme-pullyou.github.io/tootoo-2022/",
+	urlSource: "https://github.com/ladybug-tools/spider-2022/tree/main/spider-viewer",
 	version: document.head.querySelector( "[ name=date ]" ).content,
 
 };
@@ -78,7 +78,7 @@ function init () {
 
 	if ( location.protocol === "https:" ) {
 
-		if ( COR.version !== "2021-10-14" ) { window.history.pushState( "", "", "../" + location.hash ); }
+		if ( COR.version !== "2022-10-14" ) { window.history.pushState( "", "", "../" + location.hash ); }
 
 		COR.ignoreFolders = COR.defaultIgnoreFolders;
 
