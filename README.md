@@ -2,6 +2,15 @@
 
 Your 2022 3D happy place for online browsing, composing and exporting many of the standard architecture, engineering and construction (AEC) [open data]( https://en.wikipedia.org/wiki/Open_data ) file types.
 
+
+2022-10-14 ~ Note
+* Development of the Spider Viewer is mostly on hold until I find people or organization to collaborate with. ;-(
+* I will, however try to fix any report bugs or simple wishlist items
+
+Theo Armour, maintainer
+
+
+
 ## Full screen: [Spider Viewer 2022]( https://ladybug.tools/spider-2022/spider-viewer/)
 
 
@@ -12,18 +21,19 @@ _Lissajous Orbits_
 @@@-->
 
 <!--
-
 [Dev Version]( https://ladybug.tools/spider-2022/dev/ )
-
 <button onclick='ifr.contentWindow.location.hash="https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/hbjson-sample-files/2022/demo05.hbjson"' >cityscape  ~ demo05</button>
 -->
 
 
 ## Concept
 
-### 2022-01-19
+### 2022-10-14
 
-Now: Spider Viewer 2022
+* Spider Viewer 2022 now loading properly (fingers crossed)
+* Spider Viewer 2022 displays in iframe in Read Me
+* A few minor bugs fixed
+
 
 ### 2021-09-18
 
@@ -66,15 +76,15 @@ So let's talk about making this the best Spider Viewer!
 
 * Provide fast, simple open source file manipulators for many open data Architecture, Engineering, & Construction (AEC) file types for 3D building data
 * Load and display a variety of AEC industry standard file formats
-	* Rhino 3DM
-	* gbXML
-	* Khronos [GLTF & GLB]( https://en.wikipedia.org/wiki/GlTF )
-	* Ladybug Tools HBJSON
-	* EnergyPlus IDF & OSM
-	* OBJ
-	* Radiance RAD
-	* STL
-	* VTK
+  * Rhino 3DM
+  * gbXML
+  * Khronos [GLTF & GLB]( https://en.wikipedia.org/wiki/GlTF )
+  * Ladybug Tools HBJSON
+  * EnergyPlus IDF & OSM
+  * OBJ
+  * Radiance RAD
+  * STL
+  * VTK
 * Load files via URL, operating system file dialog and Drag & Drop
 * Load multiple files of various type unto a single scene
 * Automatically decompress models in ZIP files and load them into the scene
@@ -98,7 +108,7 @@ So let's talk about making this the best Spider Viewer!
 * All the apps export and import data in the file format of their choice
 * The Spider apps "magic" is to read the data in one format and write the data in another format
 * The spider process relies on multiple small apps each custom tailored to a single task: translating information from one specific format to another specific format.
-* There are be multiple apps for for every format. For example the translator for gbXML files going from a Bentley product to a Sephora may be differnt that the translator for gbXML files going from an NREL product goint to an Autodesk product.
+* There are be multiple apps for for every format. For example the translator for gbXML files going from a Bentley product to a Sephora may be different that the translator for gbXML files going from an NREL product goint to an Autodesk product.
 * There may be further forks so that an app is custom-tailored for, say, an Arup's workflow or a  Trane workflow.
 * The apps - for the most part - are small and simple coding efforts written in easy to read and decipher formats. They are customizable to specific workflows by entry and medium level developers.
 
@@ -110,7 +120,7 @@ So let's talk about making this the best Spider Viewer!
 All members of the AEC community must take an active role implementing the relevant goals. These may include:
 
 * Goal 1: End poverty in all its forms everywhere
-	* Target 1.4: By 2030, ensure that all men and women, in particular the poor and the vulnerable, have equal rights to economic resources, as well as access to basic services, ownership and control over land and other forms of property, inheritance, natural resources, appropriate new technology and financial services, including microfinance &lt;br&gt;
+  * Target 1.4: By 2030, ensure that all men and women, in particular the poor and the vulnerable, have equal rights to economic resources, as well as access to basic services, ownership and control over land and other forms of property, inheritance, natural resources, appropriate new technology and financial services, including microfinance &lt;br&gt;
 * Goal 11: Make cities and human settlements inclusive, safe, resilient and sustainable
 
 _Further revisions of this document will highlight relevant goal, targets and indicators._
