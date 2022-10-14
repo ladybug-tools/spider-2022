@@ -32,7 +32,7 @@ _Lissajous Orbits_
 
 * Spider Viewer 2022 now loading properly (fingers crossed)
 * Spider Viewer 2022 displays in iframe in Read Me
-* A few minor bugs fixed
+* A few minor bugs fixed otherwise almost the same as the last 2021 release
 
 
 ### 2021-09-18
