@@ -4,8 +4,8 @@ Your 2022 3D happy place for online browsing, composing and exporting many of th
 
 
 2022-10-14 ~ Note
-* Development of the Spider Viewer is mostly on hold until I find people or organization to collaborate with. ;-(
-* I will, however try to fix any report bugs or simple wishlist items
+* Development of the Spider Viewer is mostly on hold until I find people or an organization to collaborate with. ;-(
+* I will, however, try to fix any reported bugs or simple wishlist items
 
 Theo Armour, maintainer
 
