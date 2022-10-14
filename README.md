@@ -6,7 +6,7 @@ Your 2022 3D happy place for online browsing, composing and exporting many of th
 
 
 <!--@@@
-<iframe id=ifr src=https://ladybug.tools/spider-2022/cookbook/lissajous-orbits/ class="iframe-resize" ></iframe>
+<iframe id=ifr src=https://ladybug.tools/spider-2022/spider-viewer/ class="iframe-resize" ></iframe>
 _Lissajous Orbits_
 
 @@@-->
