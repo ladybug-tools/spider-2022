@@ -28,7 +28,7 @@ const COR = {
 	releaseThree: "r134",
 	title: document.title ? document.title : location.href.split( "/" ).pop().slice( 0, - 5 ).replace( /-/g, " " ),
 	urlAssets: "https://pushme-pullyou.github.io/tootoo-2022/",
-	urlSource: "https://github.com/ladybug-tools/spider-2022/tree/main/spider-viewer",
+	urlSource: "https://github.com/ladybug-tools/spider-2022/tree/master/spider-viewer",
 	version: document.head.querySelector( "[ name=date ]" ).content,
 
 };

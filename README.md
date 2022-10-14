@@ -16,7 +16,7 @@ Theo Armour, maintainer
 
 <!--@@@
 <iframe id=ifr src=https://ladybug.tools/spider-2022/spider-viewer/ class="iframe-resize" ></iframe>
-_Lissajous Orbits_
+_Spider Viewer 2022_
 
 @@@-->
 
