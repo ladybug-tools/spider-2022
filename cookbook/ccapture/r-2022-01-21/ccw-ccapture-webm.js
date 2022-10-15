@@ -187,8 +187,8 @@ CCW.render = function () {
 
 	delta = Math.PI * 2 / CCW.frames;
 
-	//mesh.rotation.x += delta;
-	//mesh.rotation.y += delta;
+	mesh.rotation.x += delta;
+	mesh.rotation.y += delta;
 
 	const distance = + rngDistance.value;
 	const center = scene.position;
@@ -201,9 +201,9 @@ CCW.render = function () {
 	// camera.position.y = Math.cos( CCW.progress * 5 ) * distance;
 	// camera.position.z = Math.cos( CCW.progress * 3 ) * distance;
 
-	camera.position.x = Math.sin( CCW.progress * 7 ) * distance;
-	camera.position.y = Math.cos( CCW.progress * 5 ) * distance;
-	camera.position.z = Math.cos( CCW.progress * 3 ) * distance;
+	// camera.position.x = Math.sin( CCW.progress * 7 ) * distance;
+	// camera.position.y = Math.cos( CCW.progress * 5 ) * distance;
+	// camera.position.z = Math.cos( CCW.progress * 3 ) * distance;
 
 	// x = Math.sin( i * delta * 7 ) * distance;
 	// y = Math.cos( i * delta * 5 ) * distance;
